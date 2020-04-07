@@ -1,4 +1,4 @@
-from selenium.webdriver import Chrome
+from selenium.webdriver import Chrome, ChromeOptions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -59,10 +59,10 @@ class Solve:
 
 if __name__ == "__main__":
 
-    # game_url = "https://en.sudoku-online.net/sudoku-easy/"
+    game_url = "https://en.sudoku-online.net/sudoku-easy/"
     # game_url = "https://en.sudoku-online.net/"
     # game_url = "https://en.sudoku-online.net/sudoku-difficult/"
-    game_url = "https://en.sudoku-online.net/sudoku-very-difficult/"
+    # game_url = "https://en.sudoku-online.net/sudoku-very-difficult/"
 
     grid = deque(deque(0 for _ in range(9)) for __ in range(9))
 
@@ -70,7 +70,10 @@ if __name__ == "__main__":
 
     solver = Solve(grid)
 
-    driver = Chrome()
+    options = ChromeOptions()
+    options.add_argument("--start-maximized")
+
+    driver = Chrome(options=options)
     driver.get(url=game_url)
 
     try:
