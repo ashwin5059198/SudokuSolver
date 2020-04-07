@@ -1,0 +1,10 @@
+# virtual env
+venv/*
+
+# cache
+__pycache__/*
+
+# trial file
+test.py
+
+
