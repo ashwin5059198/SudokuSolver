@@ -68,6 +68,7 @@ if __name__ == "__main__":
 
     game_table = deque(deque(Cell() for _ in range(9)) for __ in range(9))
 
+    # load grid
     solver = Solve(grid)
 
     options = ChromeOptions()
