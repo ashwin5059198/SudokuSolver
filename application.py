@@ -1,3 +1,4 @@
+# import necessary libraries
 from selenium.webdriver import Chrome, ChromeOptions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,7 +19,7 @@ class Solve:
         self.grid = grid
         self.ref = [0, 0]
 
-    def locate_vacant(self):
+    def __locate_vacant(self):
         for i in range(9):
             for j in range(9):
                 if self.grid[i][j] == 0:
@@ -26,7 +27,7 @@ class Solve:
                     return True
         return False
 
-    def is_valid(self, row, col, value):
+    def __is_valid(self, row, col, value):
         for i in range(9):
             if (self.grid[row][i] == value) or (self.grid[i][col] == value):
                 return False
@@ -42,13 +43,13 @@ class Solve:
         return True
 
     def solve(self):
-        if not self.locate_vacant():
+        if not self.__locate_vacant():
             return True
 
         row, col = self.ref
 
         for number in range(1, 10):
-            if self.is_valid(row, col, number):
+            if self.__is_valid(row, col, number):
                 self.grid[row][col] = number
                 if self.solve():
                     return True
